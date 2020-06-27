@@ -53,10 +53,31 @@ function Matrix() {
     return str;
   }
 
+  function translate( x, y, z ) {
+    return [
+      1,0,0,0,
+      0,1,0,0,
+      0,0,1,0,
+      x,y,z,1
+    ];
+  }
+
   return {
     mult_mat4_mat4: (left, right) => matrixMult(4, left, right),
     mat4: {
       identity: () => matrixIdentity( 4 ),
+      translate: (x,y,z) => [
+        1,0,0,0,
+        0,1,0,0,
+        0,0,1,0,
+        x,y,z,1
+      ],
+      scale: (x,y,z) => [
+        x,0,0,0,
+        0,y,0,0,
+        0,0,z,0,
+        0,0,0,1
+      ],
       sprint: matrix => sprint( 4, matrix )
     }
   };
