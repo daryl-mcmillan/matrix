@@ -14,21 +14,6 @@ function Matrix() {
     return result;
   }
 
-  function matrixIdentity( size ) {
-    const result = new Array( size * size );
-    for( var row=0; row<size; row++ ) {
-      for( var col=0; col<size; col++ ) {
-        const index = matrixIndex(size, row, col);
-        if( row === col ) {
-          result[index] = 1;
-        } else {
-          result[index] = 0;
-        }
-      }
-    }
-    return result;
-  }
-
   function matrixMult( size, left, right ) {
     const result = emptyMatrix( size );
     for( var row=0; row<size; row++ ) {
@@ -65,7 +50,12 @@ function Matrix() {
   return {
     mult_mat4_mat4: (left, right) => matrixMult(4, left, right),
     mat4: {
-      identity: () => matrixIdentity( 4 ),
+      identity: () => [
+        1,0,0,0,
+        0,1,0,0,
+        0,0,1,0,
+        0,0,0,1
+      ],
       translate: (x,y,z) => [
         1,0,0,0,
         0,1,0,0,
