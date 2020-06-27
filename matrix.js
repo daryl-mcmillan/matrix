@@ -54,9 +54,9 @@ function Matrix() {
   }
 
   return {
-    matrix4: {
+    mult_mat4_mat4: (left, right) => matrixMult(4, left, right),
+    mat4: {
       identity: () => matrixIdentity( 4 ),
-      mult: (left, right) => matrixMult( 4, left, right ),
       sprint: matrix => sprint( 4, matrix )
     }
   };
